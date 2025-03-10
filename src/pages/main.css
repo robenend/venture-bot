@@ -1,0 +1,300 @@
+.map-page {
+	min-height: 100vh;
+	background-color: var(--background);
+	color: var(--text);
+}
+
+.map-container {
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	height: calc(100vh - 8rem);
+}
+
+.map {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-color: var(--card-bg);
+	border: 1px solid var(--card-border);
+	border-radius: 0.5rem;
+	overflow: hidden;
+}
+
+.map-grid {
+	position: absolute;
+	inset: 0;
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: repeat(12, 1fr);
+	opacity: 0.2;
+}
+
+.grid-col {
+	border-right: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+.grid-row {
+	border-bottom: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+.quick-access-panel {
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+	z-index: 10;
+	background-color: rgba(17, 24, 39, 0.8);
+	border: 1px solid var(--card-border);
+	border-radius: 0.375rem;
+	padding: 0.75rem;
+	backdrop-filter: blur(4px);
+}
+
+.panel-title {
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: var(--text-muted);
+	margin-bottom: 0.5rem;
+}
+
+.panel-content {
+	display: grid;
+	gap: 0.5rem;
+	font-size: 0.75rem;
+}
+
+.quick-access-link {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: var(--primary);
+	background: none;
+	border: none;
+	cursor: pointer;
+	text-align: left;
+	padding: 0;
+}
+
+.quick-access-link:hover {
+	color: var(--primary-dark);
+}
+
+.map-decoration {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 50%;
+	border: 1px solid rgba(6, 182, 212, 0.5);
+}
+
+.circle-1 {
+	width: 8rem;
+	height: 8rem;
+	opacity: 0.2;
+}
+
+.circle-2 {
+	width: 16rem;
+	height: 16rem;
+	opacity: 0.1;
+}
+
+.circle-3 {
+	width: 24rem;
+	height: 24rem;
+	opacity: 0.05;
+}
+
+.room-node-container {
+	position: absolute;
+	transform: translate(-50%, -50%);
+}
+
+.room-node {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+	background-color: #1f2937;
+	border: 2px solid var(--card-border);
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+@media (min-width: 640px) {
+	.room-node {
+		width: 4rem;
+		height: 4rem;
+	}
+}
+
+.room-node.locked {
+	background-color: rgba(31, 41, 55, 0.5);
+	cursor: not-allowed;
+}
+
+.room-node.hovered {
+	border-color: var(--primary);
+	box-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
+}
+
+.room-node:hover {
+	background-color: #374151;
+}
+
+.room-node.locked:hover {
+	background-color: rgba(31, 41, 55, 0.5);
+}
+
+.difficulty-dot {
+	width: 0.75rem;
+	height: 0.75rem;
+	border-radius: 50%;
+}
+
+@media (min-width: 640px) {
+	.difficulty-dot {
+		width: 1rem;
+		height: 1rem;
+	}
+}
+
+.difficulty-dot.green {
+	background-color: var(--green);
+}
+
+.difficulty-dot.yellow {
+	background-color: var(--yellow);
+}
+
+.difficulty-dot.red {
+	background-color: var(--red);
+}
+
+.lock-icon {
+	color: var(--text-muted);
+	font-size: 1.25rem;
+}
+
+.room-name {
+	position: absolute;
+	bottom: -1.5rem;
+	left: 50%;
+	transform: translateX(-50%);
+	white-space: nowrap;
+	font-size: 0.75rem;
+	font-weight: 500;
+	color: var(--text-muted);
+	transition: color 0.3s;
+}
+
+@media (min-width: 640px) {
+	.room-name {
+		font-size: 0.875rem;
+		bottom: -2rem;
+	}
+}
+
+.room-name.highlighted {
+	color: var(--primary);
+}
+
+.hover-indicator {
+	position: absolute;
+	top: -1px;
+	left: 50%;
+	height: 3rem;
+	width: 2px;
+	transform: translateX(-50%);
+	background: linear-gradient(
+		to top,
+		rgba(6, 182, 212, 0),
+		rgba(6, 182, 212, 0.5)
+	);
+}
+
+.room-tooltip {
+	position: absolute;
+	top: -7rem;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 12rem;
+	padding: 0.5rem;
+	background-color: var(--card-bg);
+	border: 1px solid var(--card-border);
+	border-radius: 0.375rem;
+	z-index: 20;
+}
+
+.tooltip-title {
+	font-weight: 700;
+	margin-bottom: 0.25rem;
+}
+
+.tooltip-description {
+	font-size: 0.75rem;
+	color: var(--text-muted);
+	margin-bottom: 0.5rem;
+}
+
+.tooltip-footer {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.connection-lines {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.connection-line {
+	stroke-width: 2;
+}
+
+.connection-line.available {
+	stroke: rgba(6, 182, 212, 0.3);
+}
+
+.connection-line.locked {
+	stroke: rgba(6, 182, 212, 0.15);
+	stroke-dasharray: 5, 5;
+}
+
+.map-legend {
+	position: absolute;
+	bottom: 1rem;
+	right: 1rem;
+	background-color: rgba(17, 24, 39, 0.8);
+	border: 1px solid var(--card-border);
+	border-radius: 0.375rem;
+	padding: 0.75rem;
+	backdrop-filter: blur(4px);
+}
+
+.legend-title {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: var(--text-muted);
+	margin-bottom: 0.5rem;
+}
+
+.legend-items {
+	display: grid;
+	gap: 0.5rem;
+	font-size: 0.75rem;
+}
+
+.legend-item {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
