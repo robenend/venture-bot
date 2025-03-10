@@ -2,14 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import {
-	Map,
-	Book,
-	MessageSquare,
-	User,
-	ArrowLeft,
-	Trophy,
-} from "lucide-react";
+import { Book, MessageSquare, User, ArrowLeft, Trophy } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function BottomNav() {
@@ -30,7 +23,7 @@ export function BottomNav() {
 	const isHomePage = location.pathname === "/";
 	const isLeaderboardPage = location.pathname === "/leaderboard";
 
-	const handleNavigation = (path) => {
+	const handleNavigation = (path: string) => {
 		navigate(path); // Replaces router.push
 	};
 
@@ -59,14 +52,14 @@ export function BottomNav() {
 					</button>
 				)}
 				<button
-					onClick={() => handleNavigation("/map")}
+					onClick={() => handleNavigation("/resources")}
 					className={cn(
 						"flex flex-col items-center justify-center",
 						isMapPage ? "text-cyan-400" : "text-gray-400 hover:text-cyan-400"
 					)}
 				>
-					<Map size={20} />
-					<span className="text-xs mt-1">Map</span>
+					<Book size={20} />
+					<span className="text-xs mt-1">Resources</span>
 				</button>
 				<button
 					onClick={() => handleNavigation("/leaderboard")}

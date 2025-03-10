@@ -3,18 +3,16 @@ import React, { Suspense } from "react";
 import Loader from "@/components/loader"; // Ensure the Loader component exists and is properly imported.
 
 export const ROLES = {
-	SuperAdmin: "super-admin",
 	Admin: "admin",
-	Allocator: "allocator",
-	Sales: "sales",
+	User: "user",
 };
 
 // Dynamically import RootLayout and Home
 const Home = React.lazy(() => import("../pages/home"));
-const Map = React.lazy(() => import("../pages/map"));
 const Leaderboard = React.lazy(() => import("../pages/leaderboard"));
 const Assistant = React.lazy(() => import("../pages/assistant"));
 const Challeges = React.lazy(() => import("../pages/challenge"));
+const Resources = React.lazy(() => import("../pages/resources"));
 const Room = React.lazy(() => import("../pages/room"));
 
 export const router = createBrowserRouter([
@@ -43,20 +41,20 @@ export const router = createBrowserRouter([
 				},
 			},
 			{
-				path: "/map",
-				lazy: async () => {
-					return {
-						// Use Suspense for child components as needed
-						element: <Map />,
-					};
-				},
-			},
-			{
 				path: "/challenges",
 				lazy: async () => {
 					return {
 						// Use Suspense for child components as needed
 						element: <Challeges />,
+					};
+				},
+			},
+			{
+				path: "/resources",
+				lazy: async () => {
+					return {
+						// Use Suspense for child components as needed
+						element: <Resources />,
 					};
 				},
 			},

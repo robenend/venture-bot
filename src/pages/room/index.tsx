@@ -70,8 +70,8 @@ export default function RoomPage() {
 	const [result, setResult] = useState<"correct" | "incorrect" | null>(null);
 	const [activeTab, setActiveTab] = useState("challenge");
 
-	const { id } = useParams(); // Retrieve the `id` from the route
-	const room = roomData[id as keyof typeof roomData];
+	const { id: roomId } = useParams(); // Retrieve the `id` from the route
+	const room = roomData[roomId as keyof typeof roomData];
 
 	useEffect(() => {
 		// Listen for tab change events from the bottom nav

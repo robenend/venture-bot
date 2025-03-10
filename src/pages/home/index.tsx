@@ -1,4 +1,4 @@
-import { Book, Map, MessageSquare, Trophy } from "lucide-react";
+import { Book, MessageSquare, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -68,10 +68,10 @@ export default function HomePage() {
 								<Button
 									variant="outline"
 									className="h-auto py-4 flex flex-col items-center justify-center border-gray-700 hover:border-cyan-700 hover:bg-gray-800"
-									onClick={() => (window.location.href = "/map")}
+									onClick={() => (window.location.href = "/resources")}
 								>
-									<Map className="h-6 w-6 mb-2 text-cyan-400" />
-									<span>Learning Path</span>
+									<Book className="h-6 w-6 mb-2 text-cyan-400" />
+									<span>Learning Resources</span>
 								</Button>
 								<Button
 									variant="outline"
