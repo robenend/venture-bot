@@ -193,12 +193,58 @@ export default function LeaderboardPage() {
 				</div>
 
 				<Tabs value={period} onValueChange={setPeriod} className="w-full mb-4">
-					<TabsList className="grid w-full grid-cols-3">
-						<TabsTrigger value="weekly">Weekly</TabsTrigger>
-						<TabsTrigger value="monthly">Monthly</TabsTrigger>
-						<TabsTrigger value="all-time">All Time</TabsTrigger>
-					</TabsList>
-				</Tabs>
+  <TabsList className="grid w-full grid-cols-3 gap-4">
+    <TabsTrigger
+      value="weekly"
+      className={`relative inline-flex items-center justify-center px-3 py-2 overflow-hidden text-lg font-medium ${
+        period === 'weekly' ? 'text-gray-500 bg-cyan-200' : 'text-gray-600 hover:bg-cyan-50'
+      } border border-cyan-400 rounded-full group transition-all duration-300`}
+    >
+      <span className="relative">Weekly</span>
+      {period === 'weekly' && (
+        <button
+          onClick={() => setPeriod('')}
+          className="absolute top-0 right-0 px-2 text-white text-xl"
+        >
+          &times;
+        </button>
+      )}
+    </TabsTrigger>
+    <TabsTrigger
+      value="monthly"
+      className={`relative inline-flex items-center justify-center px-3 py-2 overflow-hidden text-lg font-medium ${
+        period === 'monthly' ? 'text-gray-500 bg-cyan-200' : 'text-gray-600 hover:bg-cyan-50'
+      } border border-cyan-400 rounded-full group transition-all duration-300`}
+    >
+      <span className="relative">Monthly</span>
+      {period === 'monthly' && (
+        <button
+          onClick={() => setPeriod('')}
+          className="absolute top-0 right-0 px-2 text-white text-xl"
+        >
+          &times;
+        </button>
+      )}
+    </TabsTrigger>
+    <TabsTrigger
+      value="all-time"
+      className={`relative inline-flex items-center justify-center px-3 py-2 overflow-hidden text-lg font-medium ${
+        period === 'all-time' ? 'text-gray-500 bg-cyan-200' : 'text-gray-600 hover:bg-cyan-50'
+      } border border-cyan-400 rounded-full group transition-all duration-300`}
+    >
+      <span className="relative">All Time</span>
+      {period === 'all-time' && (
+        <button
+          onClick={() => setPeriod('')}
+          className="absolute top-0 right-0 px-2 text-white text-xl"
+        >
+          &times;
+        </button>
+      )}
+    </TabsTrigger>
+  </TabsList>
+</Tabs>
+
 
 				<Card className="border-gray-800 bg-gray-900/50 mb-4">
 					<CardHeader className="p-4 pb-2">

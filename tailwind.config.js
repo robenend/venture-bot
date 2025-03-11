@@ -51,6 +51,16 @@ export const theme = {
         foreground: "hsl(var(--card-foreground))",
       },
     },
+
+    magenta: {
+      50: '#f9e4ff', // Lighter magenta for hover effect
+      100: '#f2b8ff',
+      200: '#e98bff',
+      300: '#d65bff', // Default magenta background
+      400: '#d138d8',
+      500: '#b11bb1',
+      600: '#9e009e', // Darker magenta
+    },
     borderRadius: {
       lg: "var(--radius)",
       md: "calc(var(--radius) - 2px)",

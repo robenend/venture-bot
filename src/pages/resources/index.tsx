@@ -181,21 +181,112 @@ export default function ResourcesPage() {
 				</div>
 
 				<Tabs
-					value={activeCategory}
-					onValueChange={setActiveCategory}
-					className="w-full mb-4"
-				>
-					<TabsList className="grid w-full grid-cols-3 mb-2">
-						<TabsTrigger value="all">All</TabsTrigger>
-						<TabsTrigger value="frontend">Frontend</TabsTrigger>
-						<TabsTrigger value="backend">Backend</TabsTrigger>
-					</TabsList>
-					<TabsList className="grid w-full grid-cols-3">
-						<TabsTrigger value="database">Database</TabsTrigger>
-						<TabsTrigger value="cs-fundamentals">CS Basics</TabsTrigger>
-						<TabsTrigger value="tools">Tools</TabsTrigger>
-					</TabsList>
-				</Tabs>
+  value={activeCategory}
+  onValueChange={setActiveCategory}
+  className="w-full mb-4"
+>
+  <TabsList className="grid w-full grid-cols-3 mb-2 gap-4">
+    <TabsTrigger
+      value="all"
+      className={`relative inline-flex items-center justify-center px-3 py-2 overflow-hidden text-lg font-medium ${
+        activeCategory === 'all' ? 'text-gray-500 bg-cyan-300' : 'text-gray-600 hover:bg-cyan-50'
+      } border border-cyan-400 rounded-full group transition-all duration-300`}
+    >
+      <span className="relative">All</span>
+      {activeCategory === 'all' && (
+        <button
+          onClick={() => setActiveCategory('')}
+          className="absolute top-0 right-0 px-2 text-white text-xl"
+        >
+          &times;
+        </button>
+      )}
+    </TabsTrigger>
+    <TabsTrigger
+      value="frontend"
+      className={`relative inline-flex items-center justify-center px-3 py-2 overflow-hidden text-lg font-medium ${
+        activeCategory === 'frontend' ? 'text-gray-500 bg-cyan-300' : 'text-gray-600 hover:bg-cyan-50'
+      } border border-cyan-400 rounded-full group transition-all duration-300`}
+    >
+      <span className="relative">Frontend</span>
+      {activeCategory === 'frontend' && (
+        <button
+          onClick={() => setActiveCategory('')}
+          className="absolute top-0 right-0 px-2 text-white text-xl"
+        >
+          &times;
+        </button>
+      )}
+    </TabsTrigger>
+    <TabsTrigger
+      value="backend"
+      className={`relative inline-flex items-center justify-center px-3 py-2 overflow-hidden text-lg font-medium ${
+        activeCategory === 'backend' ? 'text-gray-500 bg-cyan-300' : 'text-gray-600 hover:bg-cyan-50'
+      } border border-cyan-400 rounded-full group transition-all duration-300`}
+    >
+      <span className="relative">Backend</span>
+      {activeCategory === 'backend' && (
+        <button
+          onClick={() => setActiveCategory('')}
+          className="absolute top-0 right-0 px-2 text-white text-xl"
+        >
+          &times;
+        </button>
+      )}
+    </TabsTrigger>
+  </TabsList>
+  <TabsList className="grid w-full grid-cols-3 gap-4">
+    <TabsTrigger
+      value="database"
+      className={`relative inline-flex items-center justify-center px-3 py-2 overflow-hidden text-lg font-medium ${
+        activeCategory === 'database' ? 'text-gray-500 bg-cyan-300' : 'text-gray-600 hover:bg-cyan-50'
+      } border border-cyan-400 rounded-full group transition-all duration-300`}
+    >
+      <span className="relative">Database</span>
+      {activeCategory === 'database' && (
+        <button
+          onClick={() => setActiveCategory('')}
+          className="absolute top-0 right-0 px-2 text-white text-xl"
+        >
+          &times;
+        </button>
+      )}
+    </TabsTrigger>
+    <TabsTrigger
+      value="cs-fundamentals"
+      className={`relative inline-flex items-center justify-center px-3 py-2 overflow-hidden text-lg font-medium ${
+        activeCategory === 'cs-fundamentals' ? 'text-gray-500 bg-cyan-300' : 'text-gray-600 hover:bg-cyan-50'
+      } border border-cyan-400 rounded-full group transition-all duration-300`}
+    >
+      <span className="relative">CS Basics</span>
+      {activeCategory === 'cs-fundamentals' && (
+        <button
+          onClick={() => setActiveCategory('')}
+          className="absolute top-0 right-0 px-2 text-white text-xl"
+        >
+          &times;
+        </button>
+      )}
+    </TabsTrigger>
+    <TabsTrigger
+      value="tools"
+      className={`relative inline-flex items-center justify-center px-3 py-2 overflow-hidden text-lg font-medium ${
+        activeCategory === 'tools' ? 'text-gray-500 bg-cyan-300' : 'text-gray-600 hover:bg-cyan-50'
+      } border border-cyan-400 rounded-full group transition-all duration-300`}
+    >
+      <span className="relative">Tools</span>
+      {activeCategory === 'tools' && (
+        <button
+          onClick={() => setActiveCategory('')}
+          className="absolute top-0 right-0 px-2 text-white text-xl"
+        >
+          &times;
+        </button>
+      )}
+    </TabsTrigger>
+  </TabsList>
+</Tabs>
+
 
 				<ScrollArea className="h-[calc(100vh-10rem)]">
 					<div className="grid gap-4">

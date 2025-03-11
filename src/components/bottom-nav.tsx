@@ -18,10 +18,12 @@ export function BottomNav() {
 
 	if (!isVisible) return null;
 
-	const isMapPage = location.pathname === "/map";
 	const isRoomPage = location.pathname.startsWith("/room/");
 	const isHomePage = location.pathname === "/";
 	const isLeaderboardPage = location.pathname === "/leaderboard";
+	const isResourcesPage = location.pathname === "/resources";
+	const isChallengesPage = location.pathname === "/challenges";
+	const isAssistantPage = location.pathname === "/assistant";
 
 	const handleNavigation = (path: string) => {
 		navigate(path); // Replaces router.push
@@ -55,7 +57,7 @@ export function BottomNav() {
 					onClick={() => handleNavigation("/resources")}
 					className={cn(
 						"flex flex-col items-center justify-center",
-						isMapPage ? "text-cyan-400" : "text-gray-400 hover:text-cyan-400"
+						isResourcesPage ? "text-cyan-400" : "text-gray-400 hover:text-cyan-400"
 					)}
 				>
 					<Book size={20} />
@@ -104,7 +106,10 @@ export function BottomNav() {
 							onClick={() => {
 								handleNavigation("/challenges");
 							}}
-							className="flex flex-col items-center justify-center text-gray-400 hover:text-cyan-400"
+							className={cn(
+								"flex flex-col items-center justify-center",
+								isChallengesPage ? "text-cyan-400" : "text-gray-400 hover:text-cyan-400"
+							)}
 						>
 							<Book size={20} />
 							<span className="text-xs mt-1">Challenges</span>
@@ -113,7 +118,10 @@ export function BottomNav() {
 							onClick={() => {
 								handleNavigation("/assistant");
 							}}
-							className="flex flex-col items-center justify-center text-gray-400 hover:text-cyan-400"
+							className={cn(
+								"flex flex-col items-center justify-center",
+								isAssistantPage ? "text-cyan-400" : "text-gray-400 hover:text-cyan-400"
+							)}
 						>
 							<MessageSquare size={20} />
 							<span className="text-xs mt-1">Assistant</span>
