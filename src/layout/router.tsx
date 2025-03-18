@@ -14,6 +14,8 @@ const Assistant = React.lazy(() => import("../pages/assistant"));
 const Challeges = React.lazy(() => import("../pages/challenge"));
 const Resources = React.lazy(() => import("../pages/resources"));
 const Room = React.lazy(() => import("../pages/room"));
+const AdminLogin = React.lazy(() => import("../pages/admin/auth/sign-in"));
+const AdminHome = React.lazy(() => import("../pages/admin"));
 
 export const router = createBrowserRouter([
 	{
@@ -85,6 +87,42 @@ export const router = createBrowserRouter([
 								<Room />
 							</Suspense>
 						),
+					};
+				},
+			},
+		],
+	},
+
+	{
+		path: "/admin",
+		lazy: async () => {
+			const Layout = (await import("../layout/admin-layout")).default;
+			return {
+				// Wrap the dynamically imported Layout with Suspense
+				element: (
+					<Suspense fallback={<Loader />}>
+						<Layout />
+					</Suspense>
+				),
+			};
+		},
+
+		children: [
+			{
+				index: true,
+				lazy: async () => {
+					return {
+						// Use Suspense for child components as needed
+						element: <AdminHome />,
+					};
+				},
+			},
+			{
+				path: "/admin/sign-in",
+				lazy: async () => {
+					return {
+						// Use Suspense for child components as needed
+						element: <AdminLogin />,
 					};
 				},
 			},
