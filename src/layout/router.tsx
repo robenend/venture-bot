@@ -16,8 +16,35 @@ const Resources = React.lazy(() => import("../pages/resources"));
 const Room = React.lazy(() => import("../pages/room"));
 const AdminLogin = React.lazy(() => import("../pages/admin/auth/sign-in"));
 const AdminHome = React.lazy(() => import("../pages/admin"));
+const LoginPage = React.lazy(() => import("../pages/auth/sign-in"));
+const LoginSuccess = React.lazy(() => import("../pages/auth/login-success"));
 
 export const router = createBrowserRouter([
+	{
+		path: "/sign-in",
+		lazy: async () => {
+			return {
+				// Wrap the dynamically imported Layout with Suspense
+				element: (
+					// <Suspense fallback={<Loader />}>
+					<LoginPage />
+					// </Suspense>
+				),
+			};
+		},
+	},
+	{
+		path: "/login-success",
+		lazy: async () => {
+			return {
+				element: (
+					// <Suspense fallback={<Loader />}>
+					<LoginSuccess />
+					// </Suspense>
+				),
+			};
+		},
+	},
 	{
 		path: "/",
 		lazy: async () => {
