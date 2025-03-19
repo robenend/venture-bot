@@ -11,10 +11,13 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useEffect, useState } from "react";
 import api from "@/lib/api";
+import { useNavigate } from "react-router-dom";
 
 export default function HomePage() {
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
+	const navigate = useNavigate();
+
 	useEffect(() => {
 		api
 			.get("/api/me")
@@ -24,14 +27,14 @@ export default function HomePage() {
 			})
 			.catch((err) => {
 				console.error("Error fetching user:", err);
+				navigate("/sign-in");
 				localStorage.removeItem("token"); // Remove invalid token
 			})
 			.finally(() => setLoading(false));
 	}, []);
 
 	if (loading) return <p>Loading...</p>;
-	if (!user) return <p>Please log in.</p>;
-
+	
 	return (
 		<div className="flex flex-col min-h-screen bg-gray-900 text-gray-100">
 			<header className="p-4 border-b border-gray-800">
@@ -101,7 +104,9 @@ export default function HomePage() {
 									>
 										<div
 											className="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500"
-											style={{ width: `${(user?.profile?.points / 10) * 100}` }}
+											style={{
+												width: `${(user?.profile?.points / 10) * 100}`,
+											}}
 										></div>
 									</div>
 								</div>
